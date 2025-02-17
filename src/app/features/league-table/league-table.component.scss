@@ -1,0 +1,14 @@
+.mat-column-No {
+  width: 30px;
+}
+
+.mat-column-Team {
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.mdc-data-table__cell, .mdc-data-table__header-cell {
+  padding: 0 4px !important;
+}

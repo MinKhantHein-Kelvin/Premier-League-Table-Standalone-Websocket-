@@ -1,4 +1,4 @@
-<header class="bd-header py-3 header-bg">
+<header class="bd-header py-3" [ngClass]="teamColor ? teamColor : 'header-bg'">
   <div class="container-fluid d-flex align-items-center">
     <h1 class="d-flex align-items-center fs-4 text-white mb-0">
       <nz-select [(ngModel)]="selectedSeason">
@@ -7,7 +7,7 @@
     </h1>
 
     <div class="ms-auto">
-      <i class="fa-regular fa-bell text-color title me-2"></i>
+      <i class="fa-regular fa-bell text-color title me-3 me-md-4"></i>
       <button nz-button nzType="primary" nzShape="round">
         <i class="fa-solid fa-plus me-1"></i>
         <span>Follow</span>

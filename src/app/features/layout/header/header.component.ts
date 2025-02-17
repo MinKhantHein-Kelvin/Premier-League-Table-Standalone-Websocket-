@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
 import { RestService } from '../../../shared/services';
 import { HttpClientModule } from '@angular/common/http';
 import { Client } from '../../../shared/utils/client';
@@ -17,6 +17,7 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
   changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
+  @Input() teamColor : string = "";
   _restService = inject(RestService);
   _util : Client = new Client();
   seasonList : string[] = [];

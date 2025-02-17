@@ -4,12 +4,13 @@ import { AppComponent } from './app/app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { importProvidersFrom } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const extendedConfig = {
   ...appConfig,
   providers: [
     ...appConfig.providers,
-    importProvidersFrom(BrowserAnimationsModule) // ✅ Add animations support
+    importProvidersFrom(BrowserAnimationsModule), provideAnimationsAsync() // ✅ Add animations support
   ]
 };
 
