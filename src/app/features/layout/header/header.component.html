@@ -1,0 +1,17 @@
+<header class="bd-header py-3 header-bg">
+  <div class="container-fluid d-flex align-items-center">
+    <h1 class="d-flex align-items-center fs-4 text-white mb-0">
+      <nz-select [(ngModel)]="selectedSeason">
+        <nz-option *ngFor="let season of seasonList" [nzValue]="season" [nzLabel]="season"></nz-option>
+      </nz-select>
+    </h1>
+
+    <div class="ms-auto">
+      <i class="fa-regular fa-bell text-color title me-2"></i>
+      <button nz-button nzType="primary" nzShape="round">
+        <i class="fa-solid fa-plus me-1"></i>
+        <span>Follow</span>
+      </button>
+    </div>
+  </div>
+</header>

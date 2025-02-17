@@ -1,0 +1,17 @@
+
+:root {
+  --primary-color: #2980B9;
+  --text-color: #ffffff;
+}
+
+
+.body{
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+.bg-red-500 { --primary-color: #E74C3C;}
+.bg-red-700 { --primary-color: #C0392B; }
+.bg-green-600 { --primary-color: #27AE60; }
+.bg-blue-500 { --primary-color: #2980B9; }
+.bg-gray-400 { --primary-color: #95A5A6; }

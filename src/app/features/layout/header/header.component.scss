@@ -1,0 +1,11 @@
+.header-bg{
+  background: var(--primary-color);
+
+  .text-color{
+    color: var(--text-color);
+  }
+}
+
+// ::ng-deep .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before {
+//   border-bottom: none !important;
+// }
