@@ -6,6 +6,7 @@ import { PremierLeagueData, Standing } from '../../shared/models/league';
 import {MatTableModule} from '@angular/material/table';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-league-table',
@@ -17,13 +18,13 @@ import { CommonModule } from '@angular/common';
 export class LeagueTableComponent implements OnInit {
   isLoading : boolean = false;
   private _restService = inject(RestService);
+  private _router = inject(Router);
   displayedColumns: string[] = ['No','Team', 'MP', 'W', 'D', 'L', 'G', 'Pts'];
   dataSource : Standing[] = [];
   standingsData: PremierLeagueData = {
     league: { id: 0, logo: '', name: '', season: 0 },
     groups: [],
   };
-  teamColor : string = ''
 
   getTeamClass(teamName: string): string {
     const teamStyles: { [key: string]: string } = {
@@ -72,8 +73,8 @@ export class LeagueTableComponent implements OnInit {
   }
 
   handleTeamDetail(teamDetail: Standing){
-    console.log(teamDetail);
-    this.teamColor = this.getTeamClass(teamDetail.team.name);
-
+    const teamColor = this.getTeamClass(teamDetail.team.name);
+    const teamName = teamDetail.team.name;
+    this._router.navigate(['details/' + teamDetail.team.id + '/' + teamName + '/' + teamColor]);
   }
 }

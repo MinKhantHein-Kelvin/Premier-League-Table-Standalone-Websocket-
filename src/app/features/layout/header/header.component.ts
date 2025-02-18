@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -18,15 +19,22 @@ import { NzTabsModule } from 'ng-zorro-antd/tabs';
 })
 export class HeaderComponent implements OnInit {
   @Input() teamColor : string = "";
+  @Input() teamName : string = "";
   _restService = inject(RestService);
   _util : Client = new Client();
   seasonList : string[] = [];
   selectedSeason : string = "";
+
+  constructor(private location: Location) {}
 
   ngOnInit() {
     this.seasonList = this._util.getSeasons(6);
     if(this.seasonList.length > 0){
       this.selectedSeason = this.seasonList[0];
     }
+  }
+
+  handleBack = () => {
+    this.location.back();
   }
 }
