@@ -1,5 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { HeaderComponent } from '../layout/header/header.component';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { RestService } from '../../shared/services';
 import { lastValueFrom } from 'rxjs';
 import { PremierLeagueData, Standing } from '../../shared/models/league';
@@ -11,7 +10,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-league-table',
   standalone: true,
-  imports: [HeaderComponent,MatTableModule, NgxSkeletonLoaderModule, CommonModule],
+  imports: [MatTableModule, NgxSkeletonLoaderModule, CommonModule],
   templateUrl: './league-table.component.html',
   styleUrl: './league-table.component.scss'
 })
@@ -19,6 +18,7 @@ export class LeagueTableComponent implements OnInit {
   isLoading : boolean = false;
   private _restService = inject(RestService);
   private _router = inject(Router);
+  private cdr = inject(ChangeDetectorRef)
   displayedColumns: string[] = ['No','Team', 'MP', 'W', 'D', 'L', 'G', 'Pts'];
   dataSource : Standing[] = [];
   standingsData: PremierLeagueData = {
@@ -69,6 +69,8 @@ export class LeagueTableComponent implements OnInit {
 
     }finally{
       this.isLoading = false;
+      this.cdr.detectChanges()
+
     }
   }
 

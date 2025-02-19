@@ -1,5 +1,4 @@
 .header-bg {
-  background: var(--primary-color);
   z-index: 4;
 
   .text-color {
@@ -22,8 +21,13 @@
     transition: opacity 0.3s ease-in-out;
   }
 
+  .first-section{
+    background: var(--primary-color);
+  }
+
   .second-section{
     z-index: 4;
+    background: var(--primary-color);
   }
 
   .third-section{
@@ -35,6 +39,7 @@
       color: var(--text-color);
       li{
         padding: 20px 20px 5px 20px;
+        cursor: pointer;
       }
 
       .active-tab {
@@ -57,4 +62,29 @@
   width: 100%;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
+}
+
+:host ::ng-deep .third-section {
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #EFEFEF;
+    // border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #BCBABD;
+    // border-radius: 2px;
+  }
+}
+
+
+
+@media screen and (min-width: 768px) {
+  .third-section ul{
+    justify-content: center;
+  }
 }

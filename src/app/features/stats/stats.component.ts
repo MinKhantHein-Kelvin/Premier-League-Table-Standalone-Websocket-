@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../layout/header/header.component';
 
 @Component({
   selector: 'app-stats',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [],
   templateUrl: './stats.component.html',
   styleUrl: './stats.component.scss'
 })

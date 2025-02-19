@@ -1,9 +1,7 @@
-<app-header />
-
 <div class="section py-5">
   <div class="container">
     <div class="row d-flex justify-content-center">
-      <div class="col-md-7 col-12" *ngIf="dataSource.length > 0">
+      <div class="col-md-7 col-12">
         <div class="card">
           <div class="card-body">
             <p class="card-title d-flex align-items-center sub-title">
@@ -16,7 +14,6 @@
                 <tr *ngFor="let i of [1,2,3,4,5,6,7]">
                   <td><ngx-skeleton-loader appearance="line" [theme]="{ width: '20px', height: '20px' }"></ngx-skeleton-loader></td>
                   <td>
-                    <!-- <ngx-skeleton-loader appearance="circle" [theme]="{ width: '18px', height: '18px', 'margin-right': '5px' }"></ngx-skeleton-loader> -->
                     <ngx-skeleton-loader appearance="line" [theme]="{ width: '80px', height: '20px' }"></ngx-skeleton-loader>
                   </td>
                   <td><ngx-skeleton-loader appearance="line" [theme]="{ width: '30px', height: '20px' }"></ngx-skeleton-loader></td>

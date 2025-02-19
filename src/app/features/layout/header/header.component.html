@@ -1,5 +1,5 @@
-<header class="bd-header pt-3 header-bg" [ngClass]="teamColor ? teamColor : 'header-bg'">
-  <div class="container-fluid d-flex align-items-center">
+<header class="bd-header header-bg" [ngClass]="teamColor ? teamColor : 'header-bg'">
+  <div class="first-section container-fluid d-flex align-items-center pt-3">
     <p class="d-flex align-items-center fs-4 text-white mb-0">
       @if (!teamColor) {
         <nz-select [(ngModel)]="selectedSeason">
@@ -21,7 +21,7 @@
   </div>
   <div #topDetector></div>
 
-  <section class="second-section mt-3">
+  <section class="second-section pt-3">
     <div class="d-flex align-items-center">
       <img src="https://highlightly.net/soccer/images/leagues/33973.png" alt="" class="league-img me-2">
       <div>
@@ -31,14 +31,23 @@
     </div>
   </section>
 
-  <section class="third-section" [ngClass]="{ 'sticky-section': isSticky }">
-    <ul class="d-flex justify-content-center align-items-center mb-0">
-      <li [class]="routerName == '/overview' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/overview')">Overview</li>
-      <li [class]="routerName == '/table' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/table')">Table</li>
-      <li [class]="routerName == '/matches' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/matches')">Matches</li>
-      <li [class]="routerName == '/news' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/news')">News</li>
-      <li [class]="routerName == '/squad' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/squad')">Squad</li>
-      <li [class]="routerName == '/stats' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/stats')">Stats</li>
+  <section class="third-section " [ngClass]="{ 'sticky-section': isSticky }">
+    <ul class="d-flex align-items-center mb-0 p-0">
+      <li [ngClass]="currentStateIndex ==0 ? 'active-tab' : 'inactive-tab'" (click)="goToNextState(tabState.Overview)">Overview</li>
+      <li [ngClass]="currentStateIndex ==1 ? 'active-tab' : 'inactive-tab'" (click)="goToNextState(tabState.Table)">Table</li>
+      <li [ngClass]="currentStateIndex ==2 ? 'active-tab' : 'inactive-tab'" (click)="goToNextState(tabState.Matches)">Matches</li>
+      <li [ngClass]="currentStateIndex ==3 ? 'active-tab' : 'inactive-tab'" (click)="goToNextState(tabState.News)">News</li>
+      <li [ngClass]="currentStateIndex ==4 ? 'active-tab' : 'inactive-tab'" (click)="goToNextState(tabState.Squad)">Squad</li>
+      <li [ngClass]="currentStateIndex ==5 ? 'active-tab' : 'inactive-tab'" (click)="goToNextState(tabState.Stats)">Stats</li>
     </ul>
   </section>
+
+  <ng-container [ngSwitch]="currentState">
+    <app-overview *ngSwitchCase="tabState.Overview" />
+    <app-news *ngSwitchCase="tabState.News" />
+    <app-league-table *ngSwitchCase="tabState.Table" />
+    <app-matches *ngSwitchCase="tabState.Matches" />
+    <app-squad *ngSwitchCase="tabState.Squad" />
+    <app-stats *ngSwitchCase="tabState.Stats" />
+  </ng-container>
 </header>

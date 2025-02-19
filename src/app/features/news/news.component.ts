@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from '../layout/header/header.component';
 
 @Component({
   selector: 'app-news',
   standalone: true,
-  imports: [HeaderComponent],
+  imports: [],
   templateUrl: './news.component.html',
   styleUrl: './news.component.scss'
 })
