@@ -1,15 +1,60 @@
-.header-bg{
+.header-bg {
   background: var(--primary-color);
-  .text-color{
+  z-index: 4;
+
+  .text-color {
     color: var(--text-color);
     font-size: 14px;
   }
 
-  .follow-btn{
+  .follow-btn {
     background-color: var(--text-color);
+  }
+
+  .league-img {
+    width: 70px;
+    object-fit: contain;
+  }
+
+  .hide-section {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .second-section{
+    z-index: 4;
+  }
+
+  .third-section{
+    overflow-x: auto;
+    z-index : 3;
+    background: var(--primary-color);
+    ul{
+      list-style: none;
+      color: var(--text-color);
+      li{
+        padding: 20px 20px 5px 20px;
+      }
+
+      .active-tab {
+        border-bottom: 3px solid #fff;
+        font-weight: 600;
+        opacity: 1;
+      }
+       .inactive-tab {
+        font-weight: normal;
+        opacity: 0.7;
+      }
+    }
   }
 }
 
-// ::ng-deep .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before {
-//   border-bottom: none !important;
-// }
+.sticky-section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}

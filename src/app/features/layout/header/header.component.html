@@ -1,4 +1,4 @@
-<header class="bd-header py-3 header-bg" [ngClass]="teamColor ? teamColor : 'header-bg'">
+<header class="bd-header pt-3 header-bg" [ngClass]="teamColor ? teamColor : 'header-bg'">
   <div class="container-fluid d-flex align-items-center">
     <p class="d-flex align-items-center fs-4 text-white mb-0">
       @if (!teamColor) {
@@ -19,4 +19,26 @@
       </button>
     </div>
   </div>
+  <div #topDetector></div>
+
+  <section class="second-section mt-3">
+    <div class="d-flex align-items-center">
+      <img src="https://highlightly.net/soccer/images/leagues/33973.png" alt="" class="league-img me-2">
+      <div>
+        <span class="d-block sub-title text-color">Premier League</span>
+        <span class="text-color">England</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="third-section" [ngClass]="{ 'sticky-section': isSticky }">
+    <ul class="d-flex justify-content-center align-items-center mb-0">
+      <li [class]="routerName == '/overview' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/overview')">Overview</li>
+      <li [class]="routerName == '/table' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/table')">Table</li>
+      <li [class]="routerName == '/matches' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/matches')">Matches</li>
+      <li [class]="routerName == '/news' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/news')">News</li>
+      <li [class]="routerName == '/squad' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/squad')">Squad</li>
+      <li [class]="routerName == '/stats' ? 'active-tab' : 'inactive-tab'" (click)="openPage('/stats')">Stats</li>
+    </ul>
+  </section>
 </header>

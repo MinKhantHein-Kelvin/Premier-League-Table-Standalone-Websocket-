@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { RestService } from '../../../shared/services';
 import { HttpClientModule } from '@angular/common/http';
 import { Client } from '../../../shared/utils/client';
@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzTabsModule } from 'ng-zorro-antd/tabs';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -18,16 +19,27 @@ import { Location } from '@angular/common';
   changeDetection : ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('topDetector', { static: true }) topDetector!: ElementRef;
   @Input() teamColor : string = "";
   @Input() teamName : string = "";
   _restService = inject(RestService);
   _util : Client = new Client();
   seasonList : string[] = [];
   selectedSeason : string = "";
+  routerName: any;
+  private router = inject(Router);
+  isSticky = false;
 
   constructor(private location: Location) {}
 
+  @HostListener('window:scroll', [])
+  onScroll() {
+    const scrollY = window.scrollY;
+    this.isSticky = scrollY > this.topDetector.nativeElement.offsetHeight;
+  }
+
   ngOnInit() {
+    this.routerName = this.router.url;
     this.seasonList = this._util.getSeasons(6);
     if(this.seasonList.length > 0){
       this.selectedSeason = this.seasonList[0];
@@ -36,5 +48,11 @@ export class HeaderComponent implements OnInit {
 
   handleBack = () => {
     this.location.back();
+  }
+
+  openPage(routeUrl: string) {
+    if (this.router.url != routeUrl) {
+      this.router.navigate([routeUrl]);
+    }
   }
 }
